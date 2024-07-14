@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Destiny {
+  id                             Int          @id @default(autoincrement()) @map("destiny_id")
+  created_at                     DateTime?    @default(now())
+  title                          String       @db.VarChar(256)
+  content                        String?
+  favoritedBy                    Int?
+  User_Destiny_favoritedByToUser User?        @relation("Destiny_favoritedByToUser", fields: [favoritedBy], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Attraction                     Attraction[]
+
+  @@map("destinies")
+}
+
+model Attraction {
+  id         Int       @id @default(autoincrement()) @map("attraction_id")
+  created_at DateTime? @default(now())
+  title      String    @db.VarChar(256)
+  content    String?
+  destiny    Destiny?  @relation(fields: [destinyId], references: [id])
+  destinyId  Int?
+
+  @@map("attractions")
+}
+
+model Profile {
+  id      Int     @id @default(autoincrement()) @map("profile_id")
+  bio     String?
+  user_id Int     @unique
+  users   User    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("profiles")
+}
+
+model User {
+  id                 Int       @id @default(autoincrement()) @map("user_id")
+  name               String?   @db.VarChar(256)
+  email              String    @unique @db.VarChar(256)
+  profiles           Profile?
+  favoritedDestinies Destiny[] @relation("Destiny_favoritedByToUser")
+
+  @@map("users")
+}

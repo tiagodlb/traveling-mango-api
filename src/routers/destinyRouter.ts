@@ -11,4 +11,8 @@ destinyRouter.post("/destinies", (req, res) =>
   destinyController.createDestiny(req, res)
 )
 
+destinyRouter.get("/destinies", (req, res) =>
+  destinyController.listDestiny(req, res)
+)
+
 export default destinyRouter

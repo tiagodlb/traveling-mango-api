@@ -1,8 +1,8 @@
 import DestinyEntity from "@/entities/destinyEntity.js"
 
 export default interface InterfaceDestinyRepository {
-  criaDestiny(destiny: DestinyEntity): void | Promise<void>
-  listaDestiny(): Array<DestinyEntity> | Promise<DestinyEntity[]>
+  createDestiny(destiny: DestinyEntity): void | Promise<void>
+  listDestiny(): Array<DestinyEntity> | Promise<DestinyEntity[]>
   atualizaDestinny(
     id: number,
     pet: DestinyEntity

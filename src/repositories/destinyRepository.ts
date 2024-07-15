@@ -15,13 +15,14 @@ export default class DestinyRepository implements InterfaceDestinyRepository {
 
   async createDestiny({ title, content }): Promise<void> {
     await this.prisma.destiny.create({
-      data: { title, content },
+      data: { title, content, favoritedBy: 0 },
     })
   }
 
-  listDestiny(): Array<DestinyEntity> | Promise<DestinyEntity[]> {
-    throw new Error("Method not implemented.")
+  async listDestiny(): Promise<DestinyEntity[]> {
+    return await this.prisma.destiny.findMany()
   }
+
   atualizaDestinny(
     id: number,
     pet: DestinyEntity

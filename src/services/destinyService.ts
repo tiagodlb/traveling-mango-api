@@ -5,6 +5,7 @@ export default class DestinyService {
   constructor(private repository: DestinyRepository) {
     this.repository = repository
   }
+
   async createDestiny(destiny: DestinyEntity) {
     const { title, content } = <DestinyEntity>destiny
     if (!destiny.title) {
@@ -14,5 +15,9 @@ export default class DestinyService {
     const newDestiny = new DestinyEntity(title, content)
 
     await this.repository.createDestiny(newDestiny)
+  }
+
+  async listDestiny() {
+    return await this.repository.listDestiny()
   }
 }

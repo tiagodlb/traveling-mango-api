@@ -14,13 +14,12 @@ datasource db {
 }
 
 model Destiny {
-  id                             Int          @id @default(autoincrement()) @map("destiny_id")
-  created_at                     DateTime?    @default(now())
-  title                          String       @db.VarChar(256)
-  content                        String?
-  favoritedBy                    Int?
-  User_Destiny_favoritedByToUser User?        @relation("Destiny_favoritedByToUser", fields: [favoritedBy], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Attraction                     Attraction[]
+  id          Int          @id @default(autoincrement()) @map("destiny_id")
+  created_at  DateTime?    @default(now())
+  title       String       @db.VarChar(256)
+  content     String?
+  favoritedBy Int?
+  Attraction  Attraction[]
 
   @@map("destinies")
 }
@@ -46,11 +45,10 @@ model Profile {
 }
 
 model User {
-  id                 Int       @id @default(autoincrement()) @map("user_id")
-  name               String?   @db.VarChar(256)
-  email              String    @unique @db.VarChar(256)
-  profiles           Profile?
-  favoritedDestinies Destiny[] @relation("Destiny_favoritedByToUser")
+  id       Int      @id @default(autoincrement()) @map("user_id")
+  name     String?  @db.VarChar(256)
+  email    String   @unique @db.VarChar(256)
+  profiles Profile?
 
   @@map("users")
 }

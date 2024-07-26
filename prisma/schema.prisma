@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,6 +15,7 @@ model Destiny {
   favoritedBy Int?
   Attraction  Attraction[]
 
+  @@index([favoritedBy], map: "destinies_favoritedBy_fkey")
   @@map("destinies")
 }
 
@@ -29,9 +24,10 @@ model Attraction {
   created_at DateTime? @default(now())
   title      String    @db.VarChar(256)
   content    String?
-  destiny    Destiny?  @relation(fields: [destinyId], references: [id])
   destinyId  Int?
+  destiny    Destiny?  @relation(fields: [destinyId], references: [id])
 
+  @@index([destinyId], map: "attractions_destinyId_fkey")
   @@map("attractions")
 }
 
@@ -46,8 +42,9 @@ model Profile {
 
 model User {
   id       Int      @id @default(autoincrement()) @map("user_id")
-  name     String?  @db.VarChar(256)
+  name     String  @db.VarChar(256)
   email    String   @unique @db.VarChar(256)
+  password String   @db.VarChar(256)
   profiles Profile?
 
   @@map("users")

@@ -15,4 +15,9 @@ destinyRouter.get("/destinies", (req, res) =>
   destinyController.listDestiny(req, res)
 )
 
+destinyRouter.get("/welcome", (req, res) =>
+  res.send("OK")
+)
+
+
 export default destinyRouter

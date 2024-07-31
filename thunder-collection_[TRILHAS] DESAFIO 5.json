@@ -1,0 +1,127 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "[TRILHAS] DESAFIO 5",
+    "collectionId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+    "dateExported": "2024-07-31T14:46:06.465Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e09738c8-46fa-4be4-a38d-098739d465ae",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "GET healthy_attraction",
+            "url": "http://localhost:3000/healthy_attraction",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-07-31T14:45:29.629Z",
+            "modified": "2024-07-31T14:45:29.629Z",
+            "headers": []
+        },
+        {
+            "_id": "b66f57a3-a218-4083-b6d9-bda244ec65f7",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "GET healthy_destiny",
+            "url": "http://localhost:3000/healthy_destiny",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-07-31T14:45:39.244Z",
+            "modified": "2024-07-31T14:45:39.244Z",
+            "headers": []
+        },
+        {
+            "_id": "30974cad-42fd-4bb7-9a3d-d463464978b1",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "POST Destiny",
+            "url": "http://localhost:3000/destinies",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-31T14:45:43.076Z",
+            "modified": "2024-07-31T14:45:43.076Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Lugar Teste\",\n  \"content\": \"lugar teste feito para testar\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "7e7b2ae8-5451-4fb0-9435-4cd74f8690b7",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "GET Destinies",
+            "url": "http://localhost:3000/destinies",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-07-31T14:45:47.524Z",
+            "modified": "2024-07-31T14:45:47.524Z",
+            "headers": []
+        },
+        {
+            "_id": "d18d9215-0503-4374-acad-4ec04eca611a",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "POST Register",
+            "url": "http://localhost:3000/register",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-07-31T14:45:50.964Z",
+            "modified": "2024-07-31T14:45:50.964Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"tigolimab223@gmail.com\",\n  \"name\": \"Tiago\",\n  \"password\": \"senhateste123\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "1320cee3-1752-4bfe-bc25-89ade692aa9b",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "POST Login",
+            "url": "http://localhost:3000/login",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-07-31T14:45:54.212Z",
+            "modified": "2024-07-31T14:45:54.212Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"teste3232@gmail.com\",\n  \"password\": \"12345678\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "856a31f7-2292-45ed-8676-e0aee19dfd71",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "POST attractions",
+            "url": "http://localhost:3000/attractions",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-07-31T14:45:58.407Z",
+            "modified": "2024-07-31T14:45:58.407Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\":\"Lençois Maranhenses\",\n  \"content\": \"Teste\",\n  \"destinyId\": 19\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "90a94b02-ca7e-438a-8dd1-a2e2499f555b",
+            "colId": "293a8ce9-08ae-4305-8a55-e04e04918a9b",
+            "containerId": "",
+            "name": "GET attractions",
+            "url": "http://localhost:3000/attractions",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-07-31T14:46:01.198Z",
+            "modified": "2024-07-31T14:46:01.198Z",
+            "headers": []
+        }
+    ],
+    "ref": "oZP1dp8TXWRhPFebrna1MhEtuWLP9jWv8YpV5jfvZFAocDwiB2NP5tcM5Z-7vItffisiLDCMbPF04oIy2tIA5g"
+}

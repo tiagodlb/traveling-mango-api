@@ -14,8 +14,8 @@ export default class UserController {
       const newUserService = new UserService(this.repository)
       await newUserService.createUser(user)
       return res.sendStatus(201) 
-    } catch (error) {
-      return error
+    } catch (error: any) {
+      return ErrorHandler.handle(error, req, res)
     }
   }
 
@@ -27,8 +27,8 @@ export default class UserController {
       const util = new UserUtil(this.repository)
       const token = util.generateToken(user.email as string)
       return res.send({"token":token}).status(201)
-    } catch (error: { type: string; message: string } | any) {
-      return error
+    } catch (error: any) {
+      return ErrorHandler.handle(error, req, res)
     }
   }
 }

@@ -25,7 +25,8 @@ export default class UserService {
     const cryptography = new Cryptography("secret_key123", "10")
     const hashedPassword = cryptography.encryptString(password)
     const checkUser = { email: email, password: hashedPassword }
-    if(!checkUser) throw {type: "Unauthorized", message: "Email ou Senha não existem"}
-    return await this.repository.getUser(checkUser)
+    const userExists = await this.repository.getUser(checkUser)
+    if(userExists === null) throw {type: "Unauthorized", message: "Email ou Senha não existem"}
+    return userExists
   }
 }

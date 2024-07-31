@@ -9,8 +9,8 @@ export default class DestinyController {
 
   async createDestiny(req: Request, res: Response) {
     const destiny = <DestinyEntity>req.body
+    const newDestinyService = new DestinyService(this.repository)
     try {
-      const newDestinyService = new DestinyService(this.repository)
       await newDestinyService.createDestiny(destiny)
       return res.sendStatus(201)
     } catch (error: any) {
@@ -19,8 +19,8 @@ export default class DestinyController {
   }
 
   async listDestiny(req: Request, res: Response) {
+    const newDestinyService = new DestinyService(this.repository)
     try {
-      const newDestinyService = new DestinyService(this.repository)
       const listDestiny = await newDestinyService.listDestiny()
       return res.send(listDestiny)
     } catch (error: any) {

@@ -45,11 +45,8 @@ export default class UserRepository implements InterfaceUserRepository {
     email: string
     password: string
   }): Promise<UserEntity | null> {
-    return await this.prisma.user.findUnique({
-      where: {
-        email: email,
-        password: password,
-      },
-    })
+    return await this.prisma.user.findFirst({
+      where: {OR: [{email},{password}]}
+    });
   }
 }

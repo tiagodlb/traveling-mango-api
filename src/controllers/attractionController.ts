@@ -17,7 +17,7 @@ export default class AttractionController {
       return ErrorHandler.handle(error, req, res)
     }
   }
-
+ 
   async listAttraction(req: Request, res: Response) {
     const newattractionService = new AttractionService(this.repository)
     try {

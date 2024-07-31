@@ -10,8 +10,9 @@ datasource db {
 model Destiny {
   id          Int          @id @default(autoincrement()) @map("destiny_id")
   created_at  DateTime?    @default(now())
-  title       String?       @db.VarChar(256)
+  title       String?      @db.VarChar(256)
   content     String?
+  imgURL      String?
   favoritedBy Int?
   Attraction  Attraction[]
 
@@ -24,6 +25,7 @@ model Attraction {
   created_at DateTime? @default(now())
   title      String    @db.VarChar(256)
   content    String?
+  imgURL     String?
   destinyId  Int?
   destiny    Destiny?  @relation(fields: [destinyId], references: [id])
 
@@ -42,7 +44,7 @@ model Profile {
 
 model User {
   id       Int      @id @default(autoincrement()) @map("user_id")
-  name     String  @db.VarChar(256)
+  name     String   @db.VarChar(256)
   email    String   @unique @db.VarChar(256)
   password String   @db.VarChar(256)
   profiles Profile?

@@ -3,6 +3,7 @@ export default class AttractionEntity {
     created_at?: Date | null;
     title: string;
     content: string | null;
+    imgURL?: string | null
     destinyId: number | null;
     favoritedBy?: number | null;
   

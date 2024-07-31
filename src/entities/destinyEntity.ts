@@ -5,6 +5,7 @@ export default class DestinyEntity {
   created_at?: Date | null;
   title: string;
   content: string | null;
+  imgURL?: string | null
   favoritedBy?: number | null;
   Attraction?: AttractionEntity[];
 
@@ -30,6 +31,6 @@ export default class DestinyEntity {
 
   withAttraction(attractions: AttractionEntity[]): this {
     this.Attraction = attractions;
-    return this;
+    return this;  
   }
 }

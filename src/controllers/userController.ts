@@ -1,4 +1,5 @@
 import UserEntity from "@/entities/userEntity.js"
+import ErrorHandler from "@/middlewares/handleErrorMiddleware.js"
 import UserRepository from "@/repositories/userRepository.js"
 import UserService from "@/services/userService.js"
 import UserUtil from "@/utils/user.js"

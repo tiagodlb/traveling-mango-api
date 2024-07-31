@@ -10,10 +10,9 @@ export default class UserService {
 
   async createUser(user: UserEntity) {
     const { email, name, password } = <UserEntity>user
-    if (!user.email) {
-      throw "Erro"
-    }
-
+    const info = await this.repository.getUserByEmail({email: email});
+    const emailExists = info?.email
+    if(emailExists) throw "email exists"
     const cryptography = new Cryptography("secret_key123", "10")
     const hashedPassword = cryptography.encryptString(password)
 

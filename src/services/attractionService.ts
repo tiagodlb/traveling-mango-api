@@ -8,8 +8,8 @@ export default class AttractionService {
 
   async createAttraction(attraction: AttractionEntity) {
     const { title, content, destinyId } = <AttractionEntity>attraction
-    if (!attraction.title) {
-      throw "Error"
+    if (!attraction.destinyId) {
+      throw {type:"not_found", message: "Destino não encontrado"}
     }
 
     const newDestiny = new AttractionEntity(title, content, destinyId)
@@ -18,6 +18,8 @@ export default class AttractionService {
   }
 
   async listAttraction() {
-    return await this.repository.listAttraction()
+    const list = await this.repository.listAttraction()
+    if(list.length === 0) throw {type:"not_found", message: "Nenhuma atração cadastrada"}
+    return list
   }
 }

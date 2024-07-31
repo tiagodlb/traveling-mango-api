@@ -29,14 +29,6 @@ export default class DestinyRepository implements InterfaceDestinyRepository {
     )
   }
 
-  async getDestinyByTitle({ id }): Promise<void> {
-    await this.prisma.destiny.findUnique({
-      where: {
-        id: id,
-      },
-    })
-  }
-
   atualizaDestinny(
     id: number,
     pet: DestinyEntity

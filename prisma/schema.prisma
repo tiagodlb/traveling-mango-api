@@ -10,7 +10,7 @@ datasource db {
 model Destiny {
   id          Int          @id @default(autoincrement()) @map("destiny_id")
   created_at  DateTime?    @default(now())
-  title       String       @db.VarChar(256)
+  title       String?       @db.VarChar(256)
   content     String?
   favoritedBy Int?
   Attraction  Attraction[]

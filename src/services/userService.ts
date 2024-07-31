@@ -1,7 +1,6 @@
 import UserEntity from "@/entities/userEntity.js"
 import UserRepository from "@/repositories/userRepository.js"
 import Cryptography from "@/utils/crypthography.js"
-import UserUtil from "@/utils/user.js"
 
 export default class UserService {
   constructor(private repository: UserRepository) {
@@ -10,9 +9,9 @@ export default class UserService {
 
   async createUser(user: UserEntity) {
     const { email, name, password } = <UserEntity>user
-    const info = await this.repository.getUserByEmail({email: email});
+    const info = await this.repository.getUserByEmail({ email: email })
     const emailExists = info?.email
-    if(emailExists) throw "email exists"
+    if (emailExists) throw {type: "Conflict", message:"Email já cadastrado"}
     const cryptography = new Cryptography("secret_key123", "10")
     const hashedPassword = cryptography.encryptString(password)
 
@@ -26,6 +25,7 @@ export default class UserService {
     const cryptography = new Cryptography("secret_key123", "10")
     const hashedPassword = cryptography.encryptString(password)
     const checkUser = { email: email, password: hashedPassword }
+    if(!checkUser) throw {type: "Unauthorized", message: "Email ou Senha não existem"}
     return await this.repository.getUser(checkUser)
   }
 }

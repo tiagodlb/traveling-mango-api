@@ -6,6 +6,8 @@ export default class DestinyEntity {
   title: string
   content: string | null
   imgURL: string | null
+  lat?: number | null
+  long?: number | null
   favoritedBy?: number | null
   Attraction?: AttractionEntity[]
 
@@ -32,6 +34,16 @@ export default class DestinyEntity {
 
   withImgURL(imgURL: string | null): this {
     this.imgURL = imgURL
+    return this
+  }
+
+  withLat(lat: number | null): this {
+    this.lat = lat
+    return this
+  }
+
+  withLong(long: number | null): this {
+    this.long = long
     return this
   }
 

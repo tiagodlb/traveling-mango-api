@@ -58,6 +58,8 @@ export default class DestinyRepository implements InterfaceDestinyRepository {
         .withCreatedAt(destiny.created_at)
         .withFavoritedBy(destiny.favoritedBy)
         .withImgURL(destiny.imgURL)
+        .withLat(destiny.lat)
+        .withLong(destiny.long)
         .withAttraction(attractions)
     })
   }

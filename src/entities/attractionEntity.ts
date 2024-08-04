@@ -4,6 +4,8 @@ export default class AttractionEntity {
   title: string
   content: string | null
   imgURL: string | null
+  lat?: number | null
+  long?: number | null
   destinyId: number | null
   favoritedBy?: number | null
 

@@ -19,8 +19,7 @@ export default class AttractionRepository
   }
   updateAttraction(
     id: number,
-    title: string,
-    content: string
+    attraction: AttractionEntity
   ): Promise<{ success: boolean; message?: string }> | void {
     throw new Error("Method not implemented.")
   }
@@ -34,5 +33,22 @@ export default class AttractionRepository
     await this.prisma.attraction.create({
       data: { title, content, destinyId },
     })
+  }
+
+  async findById(id: number): Promise<AttractionEntity> {
+    const result = await this.prisma.attraction.findUnique({
+      where: { id: id },
+    })
+
+    if (result === null) {
+      throw new Error(`DestinyEntity with id ${id} not found`)
+    }
+
+    return new AttractionEntity(
+      result.title as string,
+      result.content,
+      result.destinyId,
+      result.imgURL
+    )
   }
 }

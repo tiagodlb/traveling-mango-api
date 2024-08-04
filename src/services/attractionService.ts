@@ -7,12 +7,12 @@ export default class AttractionService {
   }
 
   async createAttraction(attraction: AttractionEntity) {
-    const { title, content, destinyId } = <AttractionEntity>attraction
+    const { title, content, destinyId, imgURL } = <AttractionEntity>attraction
     if (!attraction.destinyId) {
       throw { type: "not_found", message: "Destino não encontrado" }
     }
 
-    const newDestiny = new AttractionEntity(title, content, destinyId)
+    const newDestiny = new AttractionEntity(title, content, destinyId, imgURL)
 
     await this.repository.createAttraction(newDestiny)
   }
@@ -22,5 +22,29 @@ export default class AttractionService {
     if (list.length === 0)
       throw { type: "not_found", message: "Nenhuma atração cadastrada" }
     return list
+  }
+
+  async updateAttraction(id: string, attraction: AttractionEntity) {
+    const { title, content, destinyId, imgURL } = <AttractionEntity>attraction
+    if (!attraction.destinyId) {
+      throw { type: "not_found", message: "Destino da atração não encontrado" }
+    }
+    const newId = parseInt(id)
+    const exists = await this.repository.findById(newId)
+    if (!exists) {
+      throw { type: "not_found", message: "Atração não encontrada" }
+    }
+    const newDestiny = new AttractionEntity(title, content, destinyId, imgURL)
+
+    await this.repository.createAttraction(newDestiny)
+  }
+
+  async deleteAttraction(id: string) {
+    const newId = parseInt(id)
+    const exists = await this.repository.findById(newId)
+    if (!exists) {
+      throw { type: "not_found", message: "Atração não encontrada" }
+    }
+    await this.repository.deleteAttraction(newId)
   }
 }

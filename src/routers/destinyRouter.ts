@@ -16,6 +16,14 @@ destinyRouter.get("/destinies", (req, res) =>
   destinyController.listDestiny(req, res)
 )
 
+destinyRouter.put("/destinies/:id", validateSchemaMiddleware.validate(destinySchema), (req, res) =>
+  destinyController.updateDestiny(req, res)
+)
+
+destinyRouter.delete("/destinies/:id", (req, res) =>
+  destinyController.deleteDestiny(req, res)
+)
+
 destinyRouter.get("/healthy_destiny", (req, res) =>
   res.send("OK")
 )

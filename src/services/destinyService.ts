@@ -7,11 +7,8 @@ export default class DestinyService {
   }
 
   async createDestiny(destiny: DestinyEntity) {
-    const { title, content } = <DestinyEntity>destiny
-    const newDestiny = new DestinyEntity(title, content)
-    const destinyExists = await this.repository.listDestiny()
-    if (destinyExists.length != 0)
-      throw { type: "Conflict", message: "Esse destino já existe" }
+    const { title, content, imgURL } = <DestinyEntity>destiny
+    const newDestiny = new DestinyEntity(title, content, imgURL)
     await this.repository.createDestiny(newDestiny)
   }
 
@@ -20,5 +17,25 @@ export default class DestinyService {
     if (list.length === 0)
       throw { type: "not_found", message: "Nenhum destino cadastrado" }
     return list
+  }
+
+  async updateDestiny(id: string, destiny: DestinyEntity) {
+    const { title, content, imgURL } = <DestinyEntity>destiny
+    const newId = parseInt(id)
+    const exists = await this.repository.findById(newId)
+    if (!exists) {
+      throw { type: "not_found", message: "Destino não encontrado" }
+    }
+    const newDestiny = new DestinyEntity(title, content, imgURL)
+    await this.repository.updateDestiny(newId, newDestiny)
+  }
+
+  async deleteDestiny(id: string) {
+    const newId = parseInt(id)
+    const exists = await this.repository.findById(newId)
+    if (!exists) {
+      throw { type: "not_found", message: "Atração não encontrada" }
+    }
+    await this.repository.deleteDestiny(newId)
   }
 }

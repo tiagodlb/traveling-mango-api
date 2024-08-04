@@ -17,6 +17,14 @@ attractionRouter.get("/attractions", (req, res) =>
     attractionController.listAttraction(req, res)
 )
 
+attractionRouter.put("/attractions/:id",    validateSchemaMiddleware.validate(attractionSchema), (req, res) =>
+    attractionController.updateAttraction(req, res)
+)
+
+attractionRouter.delete("/attractions/:id", (req, res) =>
+    attractionController.deleteAttraction(req, res)
+)
+
 attractionRouter.get("/healthy_attraction", (req, res) =>
     res.send("OK")
 )

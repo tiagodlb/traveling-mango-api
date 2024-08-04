@@ -1,12 +1,11 @@
-import AttractionEntity from "@/entities/attractionEntity.js";
+import AttractionEntity from "@/entities/attractionEntity.js"
 
 export default interface InterfaceAttractionRepository {
-  createAttraction(destiny: AttractionEntity): void | Promise<void>
-  listAttraction():  Array<AttractionEntity> | Promise<AttractionEntity[]>
+  createAttraction(attraction: AttractionEntity): void | Promise<void>
+  listAttraction(): Array<AttractionEntity> | Promise<AttractionEntity[]>
   updateAttraction(
     id: number,
-    title: string,
-    content: string
+    attraction: AttractionEntity
   ): Promise<{ success: boolean; message?: string }> | void
 
   deleteAttraction(

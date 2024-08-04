@@ -27,4 +27,27 @@ export default class DestinyController {
       return ErrorHandler.handle(error, req, res)
     }
   }
+
+  async updateDestiny(req: Request, res: Response) {
+    const id = req.params.id as string
+    const destiny = <DestinyEntity>req.body
+    const newDestinyService = new DestinyService(this.repository)
+    try {
+      await newDestinyService.updateDestiny(id, destiny)
+      return res.sendStatus(201)
+    } catch (error: any) {
+      return ErrorHandler.handle(error, req, res)
+    }
+  }
+
+  async deleteDestiny(req: Request, res: Response) {
+    const id = req.params.id as string
+    const newDestinyService = new DestinyService(this.repository)
+    try {
+      await newDestinyService.deleteDestiny(id)
+      return res.sendStatus(204)
+    } catch (error: any) {
+      return ErrorHandler.handle(error, req, res)
+    }
+  }
 }

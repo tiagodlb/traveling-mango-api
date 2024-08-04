@@ -11,7 +11,7 @@ model Destiny {
   id          Int          @id @default(autoincrement()) @map("destiny_id")
   created_at  DateTime?    @default(now())
   title       String?      @db.VarChar(256)
-  content     String?
+  content     String?      @db.Text
   imgURL      String?
   favoritedBy Int?
   Attraction  Attraction[]
@@ -24,7 +24,7 @@ model Attraction {
   id         Int       @id @default(autoincrement()) @map("attraction_id")
   created_at DateTime? @default(now())
   title      String    @db.VarChar(256)
-  content    String?
+  content    String?   @db.Text
   imgURL     String?
   destinyId  Int?
   destiny    Destiny?  @relation(fields: [destinyId], references: [id])

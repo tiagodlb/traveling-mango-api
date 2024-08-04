@@ -13,6 +13,8 @@ model Destiny {
   title       String?      @db.VarChar(256)
   content     String?      @db.Text
   imgURL      String?
+  lat         Float?
+  long        Float?
   favoritedBy Int?
   Attraction  Attraction[]
 
@@ -26,6 +28,8 @@ model Attraction {
   title      String    @db.VarChar(256)
   content    String?   @db.Text
   imgURL     String?
+  lat        Float?
+  long       Float?
   destinyId  Int?
   destiny    Destiny?  @relation(fields: [destinyId], references: [id])
 
